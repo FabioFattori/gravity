@@ -8,7 +8,8 @@
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Image x:Name="sfondo" HorizontalAlignment="Left" Height="409" VerticalAlignment="Top" Width="307" Margin="197,10,0,0" Source="sfondo.jpg"/>
-        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="72" VerticalAlignment="Top" Width="66" Margin="301,90,0,0" Source="vino.png"/>
+        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="50" Margin="316,90,0,0" Source="vino.png"/>
+        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="43" Margin="403,90,0,0" Source="coca cola.png"/>
 
     </Grid>
 </Window>
