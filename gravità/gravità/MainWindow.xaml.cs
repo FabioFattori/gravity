@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Threading;
 
 namespace gravità
 {
@@ -20,9 +21,38 @@ namespace gravità
     /// </summary>
     public partial class MainWindow : Window
     {
+        //readonly Uri uriBottigliaVino = new Uri("vino.jpg", UriKind.Relative);//recupera uri
         public MainWindow()
         {
             InitializeComponent();
+
+            //ImageSource img = new BitmapImage(uriBottigliaVino);//uso uri per creare oggetto img
+            
+            
+
+
+            Thread t1 = new Thread(new ThreadStart(iniziaCadutaBottiglie));
+            t1.Start();
+        }
+
+        public void iniziaCadutaBottiglie()//metodo per muovere una immagine
+        {
+            int altezza = 90;
+            Random r = new Random();
+            while (altezza < 270)
+            {
+                this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+                {
+                    img_vino.Margin = new Thickness(301, altezza, 0, 0);
+                    
+                    
+                }));
+                Thread.Sleep(TimeSpan.FromMilliseconds(r.Next(200, 400)));
+                altezza += r.Next(50, 100);
+            }
+
+
+                
         }
     }
 }
