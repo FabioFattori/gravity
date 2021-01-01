@@ -8,6 +8,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("vino.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("sfondo.jpeg")]
 
 
