@@ -37,36 +37,34 @@ namespace gravità
 
         public void iniziaCadutaBottiglie()//metodo per muovere una immagine
         {
-            int altezza = 90;
+            int altezza = 74;
             Random r = new Random();
-            while (altezza < 270)
+            int supporto;
+            this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
             {
-                this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+                
+                img_vino.Margin = new Thickness(301, altezza, 0, 0);
+                img_cocacola.Margin = (new Thickness(403, altezza, 0, 0));
+
+            }));
+
+            this.Dispatcher.BeginInvoke(new Action(() =>
+            {
+                while (altezza < 240)
                 {
-                    if (altezza != 90)
-                    {
-                        altezza += r.Next(50, 100);
-                        img_cocacola.Margin = (new Thickness(403, altezza, 0, 0));
-                        altezza += r.Next(50, 100);
-                        img_vino.Margin = new Thickness(301, altezza, 0, 0);
-                    }
-                    else
-                    {
-                        img_vino.Margin = new Thickness(301, altezza, 0, 0);
-                        img_cocacola.Margin = (new Thickness(403, altezza, 0, 0));
-                        altezza += 1;
-                    }
-                       
-                    
-                    
+                    supporto = r.Next(25, 50);
+                    altezza += supporto;
+                    img_cocacola.Margin = (new Thickness(381, altezza, 0, 0));
+                    altezza -= supporto;
+                    supporto = r.Next(25, 50);
+                    altezza += supporto;
+                    img_vino.Margin = new Thickness(461, altezza, 0, 0);
+                    altezza -= supporto;
+                    Thread.Sleep(TimeSpan.FromSeconds(1));
 
-                }));
-                Thread.Sleep(TimeSpan.FromMilliseconds(r.Next(200, 400)));
-                
-            }
+                }
+            }));
 
-
-                
         }
     }
 }

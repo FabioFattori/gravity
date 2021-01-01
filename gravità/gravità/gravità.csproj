@@ -95,13 +95,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="sfondo.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="coca cola.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="vino.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="sfondo.jpeg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="botta.png" />
+    <Resource Include="gatto primo passo.png" />
+    <Resource Include="gatto secondo passo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

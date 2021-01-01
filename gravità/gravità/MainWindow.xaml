@@ -5,11 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:gravità"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <Image x:Name="sfondo" HorizontalAlignment="Left" Height="409" VerticalAlignment="Top" Width="307" Margin="197,10,0,0" Source="sfondo.jpg"/>
-        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="50" Margin="316,90,0,0" Source="vino.png"/>
-        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="52" VerticalAlignment="Top" Width="43" Margin="403,90,0,0" Source="coca cola.png"/>
+        Title="MainWindow" Height="555.413" Width="744.488">
+    <Grid Margin="0,0,3.8,50.4"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="83*"/>
+            <RowDefinition Height="127*"/>
+        </Grid.RowDefinitions>
+        <Image x:Name="sfondo" HorizontalAlignment="Left" Height="548" VerticalAlignment="Top" Width="938" Margin="-1,-22,0,-50.8" Source="sfondo.jpeg" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="180.065"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="101" VerticalAlignment="Top" Width="112" Margin="461,60,0,0" Source="vino.png"/>
+        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="80" Margin="381,74,0,0" Source="coca cola.png"/>
 
     </Grid>
 </Window>
