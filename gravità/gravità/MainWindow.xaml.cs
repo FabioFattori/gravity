@@ -21,6 +21,8 @@ namespace gravità
     /// </summary>
     public partial class MainWindow : Window
     {
+        int altezzaVino;
+        int altezzaCocaCola;
         //readonly Uri uriBottigliaVino = new Uri("vino.jpg", UriKind.Relative);//recupera uri
         public MainWindow()
         {
@@ -31,40 +33,65 @@ namespace gravità
             
 
 
-            Thread t1 = new Thread(new ThreadStart(iniziaCadutaBottiglie));
+            Thread t1 = new Thread(new ThreadStart(iniziaCadutaVino));
+            Thread t2 = new Thread(new ThreadStart(InizioCadutaCocacola));
             t1.Start();
+            t2.Start();
         }
 
-        public void iniziaCadutaBottiglie()//metodo per muovere una immagine
+
+        public void iniziaCadutaVino()//metodo per muovere una immagine
         {
-            int altezza = 74;
+
+            altezzaVino = 60;
             Random r = new Random();
-            int supporto;
-            this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+            while (altezzaVino != 374)
             {
-                
-                img_vino.Margin = new Thickness(301, altezza, 0, 0);
-                img_cocacola.Margin = (new Thickness(403, altezza, 0, 0));
-
-            }));
-
-            this.Dispatcher.BeginInvoke(new Action(() =>
-            {
-                while (altezza < 240)
+                this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
                 {
-                    supporto = r.Next(25, 50);
-                    altezza += supporto;
-                    img_cocacola.Margin = (new Thickness(381, altezza, 0, 0));
-                    altezza -= supporto;
-                    supporto = r.Next(25, 50);
-                    altezza += supporto;
-                    img_vino.Margin = new Thickness(461, altezza, 0, 0);
-                    altezza -= supporto;
-                    Thread.Sleep(TimeSpan.FromSeconds(1));
+                    img_vino.Margin = new Thickness(463, altezzaVino, 0, 0);
 
+
+                }));
+                if (374 - altezzaVino >= 50)
+                {
+
+                    Thread.Sleep(TimeSpan.FromMilliseconds(r.Next(200, 400)));
+                    altezzaVino += r.Next(10, 75);
                 }
-            }));
+                else
+                {
+                    altezzaVino += 374 - altezzaVino;
+                }
+            }
+                
+            
+        }
 
+        public void InizioCadutaCocacola()
+        {
+            int altezzaCocaCola = 74;
+            Random r = new Random();
+            while (altezzaCocaCola != 374)
+            {
+                this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+                {
+                    img_cocacola.Margin = new Thickness(383, altezzaCocaCola, 0, 0);
+
+
+                }));
+                if (374 - altezzaCocaCola >= 50)
+                {
+
+                    Thread.Sleep(TimeSpan.FromMilliseconds(r.Next(200, 400)));
+                    altezzaCocaCola += r.Next(10, 75);
+                }
+                else
+                {
+                    altezzaCocaCola += 374 - altezzaCocaCola;
+                }
+            }
         }
     }
 }
+    

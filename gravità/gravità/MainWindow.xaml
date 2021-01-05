@@ -8,10 +8,10 @@
         Title="MainWindow" Height="555.413" Width="744.488">
     <Grid Margin="0,0,3.8,50.4"  >
         <Grid.RowDefinitions>
-            <RowDefinition Height="83*"/>
-            <RowDefinition Height="127*"/>
+            <RowDefinition Height="473*"/>
+            <RowDefinition Height="2*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="sfondo" HorizontalAlignment="Left" Height="548" VerticalAlignment="Top" Width="938" Margin="-1,-22,0,-50.8" Source="sfondo.jpeg" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="sfondo" HorizontalAlignment="Left" Height="548" VerticalAlignment="Top" Width="942" Margin="-5,-22,-202.4,-50.8" Source="sfondo.jpeg" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,8 +21,26 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="101" VerticalAlignment="Top" Width="112" Margin="461,60,0,0" Source="vino.png"/>
-        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="80" Margin="381,74,0,0" Source="coca cola.png"/>
+        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="101" VerticalAlignment="Top" Width="112" Margin="463,60,0,0" Source="vino.png">
+            <Image.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Image.LayoutTransform>
+        </Image>
+        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="80" Margin="383,74,0,0" Source="coca cola.png">
+            <Image.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="381" Y="198"/>
+                </TransformGroup>
+            </Image.LayoutTransform>
+        </Image>
 
     </Grid>
 </Window>
