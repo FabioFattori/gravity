@@ -41,6 +41,17 @@
                 </TransformGroup>
             </Image.LayoutTransform>
         </Image>
+        <ListView x:Name="list_classifica" HorizontalAlignment="Left" Height="116" Margin="36,45,0,0" VerticalAlignment="Top" Width="156" >
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="oggetto" Width="100"/>
+                    <GridViewColumn Header="altezza" DisplayMemberBinding="{Binding altezze}" Width="60"/>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="btn_inizia" Content="fai cadere" HorizontalAlignment="Left" Height="40" Margin="569,40,0,0" VerticalAlignment="Top" Width="114" Click="btn_inizia_Click"/>
+        <Label Content="tabellone" HorizontalAlignment="Left" Height="27" Margin="36,18,0,0" VerticalAlignment="Top" Width="156" OpacityMask="White" Background="White"/>
+        <ListBox x:Name="list_classifica_finale" HorizontalAlignment="Left" Height="116" Margin="36,45,0,0" VerticalAlignment="Top" Width="156"/>
 
     </Grid>
 </Window>
