@@ -34,13 +34,23 @@ namespace gravità
             //ImageSource img = new BitmapImage(uriBottigliaVino);//uso uri per creare oggetto img
             altezze = new ObservableCollection<string>();
             list_classifica.ItemsSource = altezze;
+            SettaggioPerAvvio();
 
-            list_classifica_finale.Visibility = Visibility.Hidden;
+
         }
 
+        public void SettaggioPerAvvio()
+        {
+            list_classifica_finale.Visibility = Visibility.Hidden;
+            list_classifica_finale.Items.Clear();
+            altezze.Clear();
+            altezzaCocaCola = 74;
+            altezzaVino = 60;
+            altezze.Add("vino");
+            altezze.Add("coca cola");
+        }
 
-
-        public void iniziaCadutaVino()//metodo per muovere una immagine
+        public void IniziaCadutaVino()//metodo per muovere una immagine
         {
             
             altezzaVino = 60;
@@ -122,12 +132,8 @@ namespace gravità
 
         private void btn_inizia_Click(object sender, RoutedEventArgs e)
         {
-            altezze.Clear();
-            altezzaCocaCola = 74;
-            altezzaVino = 60;
-            altezze.Add("vino");
-            altezze.Add("coca cola");
-            Thread t1 = new Thread(new ThreadStart(iniziaCadutaVino));
+            SettaggioPerAvvio();
+            Thread t1 = new Thread(new ThreadStart(IniziaCadutaVino));
             Thread t2 = new Thread(new ThreadStart(InizioCadutaCocacola));
             t1.Start();
             t2.Start();
