@@ -24,7 +24,9 @@ namespace gravità
     {
         int altezzaVino;
         int altezzaCocaCola;
+        int altezzaPringles;
         ObservableCollection<string> altezze;
+     
         
         //readonly Uri uriBottigliaVino = new Uri("vino.jpg", UriKind.Relative);//recupera uri
         public MainWindow()
@@ -36,7 +38,7 @@ namespace gravità
             list_classifica.ItemsSource = altezze;
             SettaggioPerAvvio();
 
-
+            
         }
 
         public void SettaggioPerAvvio()
@@ -44,18 +46,20 @@ namespace gravità
             list_classifica_finale.Visibility = Visibility.Hidden;
             list_classifica_finale.Items.Clear();
             altezze.Clear();
-            altezzaCocaCola = 74;
-            altezzaVino = 60;
+            altezzaCocaCola = 72;
+            altezzaVino = 62;
+            altezzaPringles = 45;
             altezze.Add("vino");
             altezze.Add("coca cola");
+            altezze.Add("pringles");
         }
 
-        public void IniziaCadutaVino()//metodo per muovere una immagine
+        public void InizioCadutaVino()//metodo per muovere una immagine
         {
             
-            altezzaVino = 60;
+            altezzaVino = 62;
             Random r = new Random();
-            while (altezzaVino != 374)
+            while (altezzaVino != 388)
             {
                 this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
                 {
@@ -63,15 +67,15 @@ namespace gravità
                     
 
                 }));
-                if (374 - altezzaVino >= 50)
+                if (388 - altezzaVino >= 45)
                 {
 
-                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
-                    altezzaVino += r.Next(15, 100);
+                    Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                    altezzaVino += r.Next(20, 35);
                 }
                 else
                 {
-                    altezzaVino += 374 - altezzaVino;
+                    altezzaVino += 388 - altezzaVino;
                 }
                 this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
                 {
@@ -86,15 +90,16 @@ namespace gravità
             {
                 
                 list_classifica_finale.Items.Add("vino");
+                list_classifica_finale.Visibility = Visibility.Visible;
             }));
         }
 
         public void InizioCadutaCocacola()
         {
             
-            int altezzaCocaCola = 74;
+            int altezzaCocaCola = 72;
             Random r = new Random();
-            while (altezzaCocaCola != 374)
+            while (altezzaCocaCola != 402)
             {
                 this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
                 {
@@ -102,15 +107,15 @@ namespace gravità
                     
 
                 }));
-                if (374 - altezzaCocaCola >= 50)
+                if (402 - altezzaCocaCola >= 50)
                 {
 
-                    Thread.Sleep(TimeSpan.FromMilliseconds(300));
-                    altezzaCocaCola += r.Next(15, 100);
+                    Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                    altezzaCocaCola += r.Next(25, 30);
                 }
                 else
                 {
-                    altezzaCocaCola += 374 - altezzaCocaCola;
+                    altezzaCocaCola += 402 - altezzaCocaCola;
                 }
                 this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
                 {
@@ -129,15 +134,58 @@ namespace gravità
                 list_classifica_finale.Visibility = Visibility.Visible;
             }));
         }
+        public void InizioCadutaPringles()//metodo per muovere una immagine
+        {
+
+            altezzaPringles = 45;
+            Random r = new Random();
+            while (altezzaPringles != 384)
+            {
+                this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+                {
+                    img_pringles.Margin = new Thickness(343, altezzaPringles, 0, 0);
+
+
+                }));
+                if (384 - altezzaPringles >= 65)
+                {
+
+                    Thread.Sleep(TimeSpan.FromMilliseconds(500));
+                    altezzaPringles += r.Next(24, 32);
+                }
+                else
+                {
+                    altezzaPringles += 384 - altezzaPringles;
+                }
+                this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+                {
+
+                    altezze.RemoveAt(2);
+
+                    altezze.Add("pringles         " + Convert.ToString(altezzaPringles));
+                }));
+
+            }
+            this.Dispatcher.BeginInvoke(new Action(() =>//scriviamo cosi perchè il wpf è gestito da thread quindi vanno in conflitto:action è un delegato che risolve il conflitto
+            {
+
+                list_classifica_finale.Items.Add("pringles");
+                list_classifica_finale.Visibility = Visibility.Visible;
+            }));
+        }
 
         private void btn_inizia_Click(object sender, RoutedEventArgs e)
         {
+            
             SettaggioPerAvvio();
-            Thread t1 = new Thread(new ThreadStart(IniziaCadutaVino));
+            Thread t1 = new Thread(new ThreadStart(InizioCadutaVino));
             Thread t2 = new Thread(new ThreadStart(InizioCadutaCocacola));
+            Thread t3 = new Thread(new ThreadStart(InizioCadutaPringles));
             t1.Start();
             t2.Start();
-            
+            t3.Start();
+
+           
         }
     }
 }

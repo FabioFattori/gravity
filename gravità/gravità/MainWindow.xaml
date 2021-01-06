@@ -6,12 +6,12 @@
         xmlns:local="clr-namespace:gravità"
         mc:Ignorable="d"
         Title="MainWindow" Height="555.413" Width="744.488">
-    <Grid Margin="0,0,3.8,50.4"  >
+    <Grid Margin="0,0,3.4,-2.4"  >
         <Grid.RowDefinitions>
-            <RowDefinition Height="473*"/>
-            <RowDefinition Height="2*"/>
+            <RowDefinition/>
+            <RowDefinition Height="0*"/>
         </Grid.RowDefinitions>
-        <Image x:Name="sfondo" HorizontalAlignment="Left" Height="548" VerticalAlignment="Top" Width="942" Margin="-5,-22,-202.4,-50.8" Source="sfondo.jpeg" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5">
+        <Image x:Name="sfondo" HorizontalAlignment="Left" Height="558" VerticalAlignment="Top" Width="942" Margin="-21,-23,-186,-7" Source="sfondo.jpeg" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
             <Image.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -21,7 +21,7 @@
                 </TransformGroup>
             </Image.RenderTransform>
         </Image>
-        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="101" VerticalAlignment="Top" Width="112" Margin="463,60,0,0" Source="vino.png">
+        <Image x:Name="img_vino" HorizontalAlignment="Left" Height="97" VerticalAlignment="Top" Width="106" Margin="474,62,0,0" Source="vino.png">
             <Image.LayoutTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -31,7 +31,7 @@
                 </TransformGroup>
             </Image.LayoutTransform>
         </Image>
-        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="80" Margin="383,74,0,0" Source="coca cola.png">
+        <Image x:Name="img_cocacola" HorizontalAlignment="Left" Height="87" VerticalAlignment="Top" Width="80" Margin="389,72,0,0" Source="coca cola.png">
             <Image.LayoutTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -41,7 +41,7 @@
                 </TransformGroup>
             </Image.LayoutTransform>
         </Image>
-        <ListView x:Name="list_classifica" HorizontalAlignment="Left" Height="116" Margin="36,45,0,0" VerticalAlignment="Top" Width="156" >
+        <ListView x:Name="list_classifica" HorizontalAlignment="Left" Height="130" Margin="36,45,0,0" VerticalAlignment="Top" Width="178" >
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="oggetto" Width="100"/>
@@ -51,7 +51,10 @@
         </ListView>
         <Button x:Name="btn_inizia" Content="fai cadere" HorizontalAlignment="Left" Height="40" Margin="569,40,0,0" VerticalAlignment="Top" Width="114" Click="btn_inizia_Click"/>
         <Label Content="tabellone" HorizontalAlignment="Left" Height="27" Margin="36,18,0,0" VerticalAlignment="Top" Width="156" OpacityMask="White" Background="White"/>
-        <ListBox x:Name="list_classifica_finale" HorizontalAlignment="Left" Height="116" Margin="36,45,0,0" VerticalAlignment="Top" Width="156"/>
+        <ListBox x:Name="list_classifica_finale" HorizontalAlignment="Left" Height="130" Margin="36,45,0,0" VerticalAlignment="Top" Width="178">
+            <Image Height="100" Width="100"/>
+        </ListBox>
+        <Image x:Name="img_pringles" HorizontalAlignment="Left" Height="105" Margin="354,45,0,0" VerticalAlignment="Top" Width="35" Source="pringles.png"/>
 
     </Grid>
 </Window>

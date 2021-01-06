@@ -108,5 +108,8 @@
     <Resource Include="gatto primo passo.png" />
     <Resource Include="gatto secondo passo.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="pringles.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
